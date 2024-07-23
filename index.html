@@ -7,71 +7,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <!-- Home Screen -->
-    <div id="home">
-      <img src="images/main.jpg" alt="Main Image" class="main-image">
-      <div class="button-container">
-        <button onclick="showMenu()">주문하기</button>
-        <button onclick="showIntro()">우리가게 소개</button>
-      </div>
-    </div>
-
-    <!-- Menu Screen -->
-    <div id="menu" class="hidden">
-      <button onclick="showOrder('김밥', '맛있는 김밥', 'images/kimbap.jpg')">김밥</button>
-      <button onclick="showOrder('떡볶이', '매콤한 떡볶이', 'images/tteokbokki.jpg')">떡볶이</button>
-      <button onclick="showOrder('라면', '따뜻한 라면', 'images/ramen.jpg')">라면</button>
-      <button class="cart-button" onclick="showCart()">장바구니</button>
-      <button class="cart-button" onclick="showOrderHistory()">주문 내역</button>
-    </div>
-
-    <!-- Order Screen -->
-    <div id="order" class="hidden">
-      <img id="order-image" src="" alt="">
-      <h3 id="order-name"></h3>
-      <p id="order-description"></p>
-      <div class="quantity-selector">
-        <button onclick="changeQuantity(-1)">-</button>
-        <span id="quantity">0</span>
-        <button onclick="changeQuantity(1)">+</button>
-      </div>
-      <button onclick="addToCart()">장바구니에 넣기</button>
-      <button onclick="showMenu()">뒤로가기</button>
-    </div>
-
-    <!-- Cart Screen -->
-    <div id="cart" class="hidden">
-      <div id="cart-items"></div>
-      <button onclick="placeOrder()">주문하기</button>
-      <button onclick="showMenu()">뒤로가기</button>
-    </div>
-
-    <!-- Order History Screen -->
-    <div id="order-history" class="hidden">
-      <div id="order-history-items"></div>
-      <button onclick="showMenu()">뒤로가기</button>
-    </div>
-
-    <!-- Intro Screen -->
-    <div id="intro" class="hidden">
-      <h1>우리가게 소개</h1>
-      <p>
-        저희 분식집은 신선한 재료와 정성 가득한 조리법으로 고객님께 최고의 맛을 선사합니다. 
-        다양한 분식 메뉴를 제공하며, 합리적인 가격과 친절한 서비스로 여러분을 맞이합니다. 
-        언제든지 방문해 주셔서 즐거운 시간 보내시길 바랍니다.
-      </p>
-      <button onclick="showMenu()">주문하기</button>
-    </div>
-
-    <!-- Popup -->
-    <div id="popup" class="hidden">
-      <p>이 메뉴를 삭제하시겠습니까?</p>
-      <button onclick="confirmDelete(true)">네</button>
-      <button onclick="confirmDelete(false)">아니오</button>
+  <div id="home">
+    <img src="images/main.jpg" alt="Main Image" class="main-image">
+    <div class="button-container">
+      <button onclick="location.href='menu.html'">주문하기</button>
+      <button onclick="location.href='intro.html'">우리가게 소개</button>
     </div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
