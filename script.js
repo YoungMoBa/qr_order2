@@ -81,7 +81,9 @@ function confirmDelete(confirm) {
 
 function placeOrder() {
   if (cart.length === 0) {
-    alert('장바구니가 비어있습니다.');
+    showAlert('장바구니가 비어있습니다.', () => {
+      showMenu();
+    });
   } else {
     alert('주문이 완료되었습니다.');
     orderHistory = orderHistory.concat(cart);
