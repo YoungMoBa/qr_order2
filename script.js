@@ -2,7 +2,6 @@ let currentView = 'home';
 let cart = [];
 let currentItem = {};
 let itemToDelete = null;
-let orderHistory = [];
 
 function showMenu() {
   switchView('menu');
@@ -56,6 +55,7 @@ function changeCartItemQuantity(index, change) {
   const item = cart[index];
   item.quantity += change;
   if (item.quantity <= 0) {
+    item.quantity = 0;
     itemToDelete = index;
     showPopup();
   } else {
