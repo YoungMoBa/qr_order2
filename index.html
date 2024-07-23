@@ -20,6 +20,7 @@
       <button onclick="showOrder('떡볶이', '매콤한 떡볶이', 'images/tteokbokki.jpg')">떡볶이</button>
       <button onclick="showOrder('라면', '따뜻한 라면', 'images/ramen.jpg')">라면</button>
       <button class="cart-button" onclick="showCart()">장바구니</button>
+      <button class="cart-button" onclick="showOrderHistory()">주문 내역</button>
     </div>
 
     <!-- Order Screen -->
@@ -40,6 +41,12 @@
     <div id="cart" class="hidden">
       <div id="cart-items"></div>
       <button onclick="placeOrder()">주문하기</button>
+      <button onclick="showMenu()">뒤로가기</button>
+    </div>
+
+    <!-- Order History Screen -->
+    <div id="order-history" class="hidden">
+      <div id="order-history-items"></div>
       <button onclick="showMenu()">뒤로가기</button>
     </div>
 
