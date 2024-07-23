@@ -15,6 +15,12 @@ button {
   cursor: pointer;
 }
 
+.main-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
 #order img {
   width: 150px;
   height: 150px;
