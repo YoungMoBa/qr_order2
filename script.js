@@ -34,7 +34,7 @@ function addToCart() {
   if (quantity > 0) {
     cart.push({ ...currentItem, quantity });
   }
-  showMenu();
+  location.href = 'menu.html';
 }
 
 function displayCartItems() {
@@ -65,7 +65,11 @@ function changeCartItemQuantity(index, change) {
 }
 
 function showPopup() {
-  document.getElementById('popup').classList.remove('hidden');
+  const popup = document.getElementById('popup');
+  popup.classList.remove('hidden');
+  popup.querySelector('p').textContent = '이 메뉴를 삭제하시겠습니까?';
+  popup.querySelector('button[onclick="confirmDelete(true)"]').onclick = () => confirmDelete(true);
+  popup.querySelector('button[onclick="confirmDelete(false)"]').onclick = () => confirmDelete(false);
 }
 
 function confirmDelete(confirm) {
@@ -83,13 +87,13 @@ function placeOrder() {
   if (cart.length === 0) {
     showAlert('장바구니가 비어있습니다.', () => {
       closeAlert();
-      showMenu();
+      location.href = 'menu.html';
     });
   } else {
     alert('주문이 완료되었습니다.');
     orderHistory = orderHistory.concat(cart);
     cart = [];
-    showMenu();
+    location.href = 'menu.html';
   }
 }
 
@@ -140,5 +144,5 @@ function showAlert(message, callback) {
 }
 
 function showIntro() {
-  switchView('intro');
+  location.href = 'intro.html';
 }
