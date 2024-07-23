@@ -82,7 +82,7 @@ function confirmDelete(confirm) {
 function placeOrder() {
   if (cart.length === 0) {
     showAlert('장바구니가 비어있습니다.', () => {
-      document.body.removeChild(document.querySelector('.alert-box'));
+      closeAlert();
       showMenu();
     });
   } else {
@@ -128,11 +128,11 @@ function showAlert(message, callback) {
   alertBox.className = 'alert-box';
   alertBox.innerHTML = `
     <p>${message}</p>
-    <button onclick="closeAlert()">확인</button>
+    <button onclick="closeAlert(${callback})">확인</button>
   `;
   document.body.appendChild(alertBox);
 
-  function closeAlert() {
+  function closeAlert(callback) {
     document.body.removeChild(alertBox);
     if (callback) callback();
   }
