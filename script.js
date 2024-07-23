@@ -80,10 +80,14 @@ function confirmDelete(confirm) {
 }
 
 function placeOrder() {
-  alert('주문이 완료되었습니다.');
-  orderHistory = orderHistory.concat(cart);
-  cart = [];
-  showMenu();
+  if (cart.length === 0) {
+    alert('장바구니가 비어있습니다.');
+  } else {
+    alert('주문이 완료되었습니다.');
+    orderHistory = orderHistory.concat(cart);
+    cart = [];
+    showMenu();
+  }
 }
 
 function showOrderHistory() {
@@ -115,4 +119,19 @@ function switchView(view) {
   document.getElementById(currentView).classList.add('hidden');
   document.getElementById(view).classList.remove('hidden');
   currentView = view;
+}
+
+function showAlert(message, callback) {
+  const alertBox = document.createElement('div');
+  alertBox.className = 'alert-box';
+  alertBox.innerHTML = `
+    <p>${message}</p>
+    <button onclick="closeAlert()">확인</button>
+  `;
+  document.body.appendChild(alertBox);
+
+  function closeAlert() {
+    document.body.removeChild(alertBox);
+    if (callback) callback();
+  }
 }
