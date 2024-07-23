@@ -2,6 +2,7 @@ let currentView = 'home';
 let cart = [];
 let currentItem = {};
 let itemToDelete = null;
+let orderHistory = [];
 
 function showMenu() {
   switchView('menu');
