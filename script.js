@@ -137,3 +137,7 @@ function showAlert(message, callback) {
     if (callback) callback();
   }
 }
+
+function showIntro() {
+  switchView('intro');
+}
