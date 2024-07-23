@@ -2,6 +2,7 @@ let currentView = 'home';
 let cart = [];
 let currentItem = {};
 let itemToDelete = null;
+let orderHistory = [];
 
 function showMenu() {
   switchView('menu');
@@ -79,8 +80,34 @@ function confirmDelete(confirm) {
 
 function placeOrder() {
   alert('주문이 완료되었습니다.');
+  orderHistory = orderHistory.concat(cart);
   cart = [];
   showMenu();
+}
+
+function showOrderHistory() {
+  switchView('order-history');
+  displayOrderHistoryItems();
+}
+
+function displayOrderHistoryItems() {
+  const orderHistoryItemsElement = document.getElementById('order-history-items');
+  orderHistoryItemsElement.innerHTML = '';
+
+  const orderSummary = orderHistory.reduce((summary, item) => {
+    if (!summary[item.name]) {
+      summary[item.name] = 0;
+    }
+    summary[item.name] += item.quantity;
+    return summary;
+  }, {});
+
+  for (const [name, quantity] of Object.entries(orderSummary)) {
+    const itemElement = document.createElement('div');
+    itemElement.className = 'order-history-item';
+    itemElement.textContent = `${name} x ${quantity}`;
+    orderHistoryItemsElement.appendChild(itemElement);
+  }
 }
 
 function switchView(view) {
