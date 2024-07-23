@@ -5,12 +5,11 @@ let itemToDelete = null;
 let orderHistory = [];
 
 function showMenu() {
-  switchView('menu');
+  window.location.href = 'menu.html';
 }
 
 function showCart() {
-  switchView('cart');
-  displayCartItems();
+  window.location.href = 'cart.html';
 }
 
 function showOrder(name, description, image) {
@@ -34,7 +33,7 @@ function addToCart() {
   if (quantity > 0) {
     cart.push({ ...currentItem, quantity });
   }
-  location.href = 'menu.html';
+  window.location.href = 'menu.html';
 }
 
 function displayCartItems() {
@@ -67,9 +66,6 @@ function changeCartItemQuantity(index, change) {
 function showPopup() {
   const popup = document.getElementById('popup');
   popup.classList.remove('hidden');
-  popup.querySelector('p').textContent = '이 메뉴를 삭제하시겠습니까?';
-  popup.querySelector('button[onclick="confirmDelete(true)"]').onclick = () => confirmDelete(true);
-  popup.querySelector('button[onclick="confirmDelete(false)"]').onclick = () => confirmDelete(false);
 }
 
 function confirmDelete(confirm) {
@@ -86,20 +82,19 @@ function confirmDelete(confirm) {
 function placeOrder() {
   if (cart.length === 0) {
     showAlert('장바구니가 비어있습니다.', () => {
-      closeAlert();
-      location.href = 'menu.html';
+      document.body.removeChild(document.querySelector('.alert-box'));
+      showMenu();
     });
   } else {
     alert('주문이 완료되었습니다.');
     orderHistory = orderHistory.concat(cart);
     cart = [];
-    location.href = 'menu.html';
+    showMenu();
   }
 }
 
 function showOrderHistory() {
-  switchView('order-history');
-  displayOrderHistoryItems();
+  window.location.href = 'order_history.html';
 }
 
 function displayOrderHistoryItems() {
@@ -144,5 +139,5 @@ function showAlert(message, callback) {
 }
 
 function showIntro() {
-  location.href = 'intro.html';
+  window.location.href = 'intro.html';
 }
