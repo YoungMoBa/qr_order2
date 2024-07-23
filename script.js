@@ -1,6 +1,7 @@
 let currentView = 'home';
 let cart = [];
 let currentItem = {};
+let itemToDelete = null;
 
 function showMenu() {
   switchView('menu');
@@ -38,11 +39,42 @@ function addToCart() {
 function displayCartItems() {
   const cartItemsElement = document.getElementById('cart-items');
   cartItemsElement.innerHTML = '';
-  cart.forEach(item => {
+  cart.forEach((item, index) => {
     const itemElement = document.createElement('div');
-    itemElement.textContent = `${item.name} x ${item.quantity}`;
+    itemElement.className = 'cart-item';
+    itemElement.innerHTML = `
+      <span>${item.name} x ${item.quantity}</span>
+      <button onclick="changeCartItemQuantity(${index}, -1)">-</button>
+      <button onclick="changeCartItemQuantity(${index}, 1)">+</button>
+    `;
     cartItemsElement.appendChild(itemElement);
   });
+}
+
+function changeCartItemQuantity(index, change) {
+  const item = cart[index];
+  item.quantity += change;
+  if (item.quantity <= 0) {
+    itemToDelete = index;
+    showPopup();
+  } else {
+    displayCartItems();
+  }
+}
+
+function showPopup() {
+  document.getElementById('popup').classList.remove('hidden');
+}
+
+function confirmDelete(confirm) {
+  if (confirm && itemToDelete !== null) {
+    cart.splice(itemToDelete, 1);
+  } else if (itemToDelete !== null) {
+    cart[itemToDelete].quantity = 1;
+  }
+  itemToDelete = null;
+  document.getElementById('popup').classList.add('hidden');
+  displayCartItems();
 }
 
 function placeOrder() {
