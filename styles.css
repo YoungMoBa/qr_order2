@@ -21,6 +21,12 @@ button {
   margin-bottom: 20px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #order img {
   width: 150px;
   height: 150px;
