@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메뉴 상세</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="order">
+    <img id="order-image" src="" alt="">
+    <h3 id="order-name"></h3>
+    <p id="order-description"></p>
+    <div class="quantity-selector">
+      <button onclick="changeQuantity(-1)">-</button>
+      <span id="quantity">0</span>
+      <button onclick="changeQuantity(1)">+</button>
+    </div>
+    <button onclick="addToCart()">장바구니에 넣기</button>
+    <button onclick="location.href='menu.html'">뒤로가기</button>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const item = params.get('item');
+
+      const items = {
+        kimbap: {
+          name: '김밥',
+          description: '맛있는 김밥',
+          image: 'images/kimbap.jpg'
+        },
+        tteokbokki: {
+          name: '떡볶이',
+          description: '매콤한 떡볶이',
+          image: 'images/tteokbokki.jpg'
+        },
+        ramen: {
+          name: '라면',
+          description: '따뜻한 라면',
+          image: 'images/ramen.jpg'
+        }
+      };
+
+      const selectedItem = items[item];
+      if (selectedItem) {
+        document.getElementById('order-name').textContent = selectedItem.name;
+        document.getElementById('order-description').textContent = selectedItem.description;
+        document.getElementById('order-image').src = selectedItem.image;
+      }
+    });
+  </script>
+</body>
+</html>
