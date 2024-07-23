@@ -82,6 +82,7 @@ function confirmDelete(confirm) {
 function placeOrder() {
   if (cart.length === 0) {
     showAlert('장바구니가 비어있습니다.', () => {
+      closeAlert();
       showMenu();
     });
   } else {
